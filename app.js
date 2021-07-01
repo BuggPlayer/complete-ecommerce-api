@@ -7,9 +7,8 @@ require('dotenv/config');
 const authJwt = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handler');
 
-
 app.use(cors());
-app.options('*', cors())
+app.options('*', cors());
 
 //middleware
 app.use(express.json());
@@ -32,20 +31,22 @@ app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/orders`, ordersRoutes);
 
 //Database
-mongoose.connect(process.env.CONNECTION_STRING, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: 'eshop-database'
-})
-.then(()=>{
-    console.log('Database Connection is ready...')
-})
-.catch((err)=> {
-    console.log(err);
-})
+mongoose
+    .connect(process.env.CONNECTION_STRING, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        dbName: 'eshop-database',
+    })
+    .then(() => {
+        console.log('Database Connection is ready...');
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+    
 
 //Server
-app.listen(8000, ()=>{
-
-    console.log('server is running http://localhost:8000');
-})
+app.listen(process.env.PORT, () => {
+    console.log(`server is running ${process.env.PORT}`);
+});

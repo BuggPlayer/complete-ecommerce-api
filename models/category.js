@@ -8,15 +8,18 @@ const categorySchema = mongoose.Schema({
     icon: {
         type: String,
     },
-    color: { 
+    color: {
         type: String,
-    }
-})
+    },
+    image: {
+        type: String,
+        default: '',
+    },
+});
 
-
-categorySchema.method('toJSON', function(){
+categorySchema.method('toJSON', function () {
     const { __v, ...object } = this.toObject();
-    const { _id:id, ...result } = object;
+    const { _id: id, ...result } = object;
     return { ...result, id };
 });
 

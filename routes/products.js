@@ -76,6 +76,8 @@ router.post(`/`, async (req, res) => {
         rating: req.body.rating,
         numReviews: req.body.numReviews,
         isFeatured: req.body.isFeatured,
+        mrp: req.body.mrp,
+        weight: req.body.weight,
     });
 
     product = await product.save();
@@ -120,6 +122,8 @@ router.put('/:id', uploadOptions.single('image'), async (req, res) => {
             rating: req.body.rating,
             numReviews: req.body.numReviews,
             isFeatured: req.body.isFeatured,
+            mrp: req.body.mrp,
+            weight: req.body.weight,
         },
         { new: true }
     );

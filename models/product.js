@@ -13,6 +13,15 @@ const productSchema = mongoose.Schema({
         type: String,
         default: ''
     },
+
+    mrp:{
+        type: String,
+        required: true
+    },
+    weight:{
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         default: ''
